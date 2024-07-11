@@ -34,5 +34,5 @@ html, body{
     display: grid;
     grid-template-columns: repeat(3, auto);
     width: 225px;
-    margin: 15px;
+    margin: 25px;
 }
