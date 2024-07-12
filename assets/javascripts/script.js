@@ -27,7 +27,7 @@ function startGame(){
     running = true;
 };
 function cellTouched(){
-    if (running) audio.play();
+    // if (running) audio.play();
     const cellIndex = this.getAttribute("cellIndex");
 
     if(options[cellIndex] != "" || !running){
