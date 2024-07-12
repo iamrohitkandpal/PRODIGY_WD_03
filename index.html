@@ -7,22 +7,26 @@
     <title>Document</title>
 </head>
 <body>
-    <audio id="myAudio" src="/assets/images/pop-sound-effect-197846.wav"></audio>
-    <div class="gameContainer">
-        <h1>Tic Tac Toe</h1>
-        <div id="cellContainer">
-            <div cellIndex="0" class="cell"></div>
-            <div cellIndex="1" class="cell"></div>
-            <div cellIndex="2" class="cell"></div>
-            <div cellIndex="3" class="cell"></div>
-            <div cellIndex="4" class="cell"></div>
-            <div cellIndex="5" class="cell"></div>
-            <div cellIndex="6" class="cell"></div>
-            <div cellIndex="7" class="cell"></div>
-            <div cellIndex="8" class="cell"></div>
+    <div class="main">
+        <img src="/assets//images/background.jpg" alt="">
+        <div class="gameContainer">
+            <h1>Tic Tac Toe</h1>
+            <div id="cellContainer">
+                <div cellIndex="0" class="cell"></div>
+                <div cellIndex="1" class="cell"></div>
+                <div cellIndex="2" class="cell"></div>
+                <div cellIndex="3" class="cell"></div>
+                <div cellIndex="4" class="cell"></div>
+                <div cellIndex="5" class="cell"></div>
+                <div cellIndex="6" class="cell"></div>
+                <div cellIndex="7" class="cell"></div>
+                <div cellIndex="8" class="cell"></div>
+            </div>
+            <h2 id="statusText"></h2>
+            <div class="buttons">
+                <button id="restartBtn"><span></span><p data-start="good luck!" data-text="start!" data-title="new game"></p></button>
+             </div>
         </div>
-        <h2 id="statusText"></h2>
-        <button id="restartBtn">Restart</button>
     </div>
 
     <script src="/assets/javascripts/script.js"></script>

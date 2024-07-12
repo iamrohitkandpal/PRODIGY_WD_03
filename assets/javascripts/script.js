@@ -36,6 +36,9 @@ function cellTouched(){
 
     updateCell(this, cellIndex);
     winnerCheck();
+    if (running && currentPlayer === "O") {
+        setTimeout(aiMove, 500);  // Delay AI move for better UX
+    }
 };
 function changePlayer(){
     currentPlayer = currentPlayer == "X" ? "O" : "X";
@@ -81,4 +84,61 @@ function winnerCheck(){
 function updateCell(cell, index){
     options[index] = currentPlayer;
     cell.textContent = currentPlayer;
+};
+
+function aiMove() {
+    let emptyCells = [];
+    for (let i = 0; i < options.length; i++) {
+        if (options[i] === "") {
+            emptyCells.push(i);
+        }
+    }
+
+    // Check for a winning move
+    for (let i = 0; i < winTerms.length; i++) {
+        const [a, b, c] = winTerms[i];
+        if (options[a] === "O" && options[b] === "O" && options[c] === "") {
+            updateCell(cells[c], c);
+            winnerCheck();
+            return;
+        }
+        if (options[a] === "O" && options[b] === "" && options[c] === "O") {
+            updateCell(cells[b], b);
+            winnerCheck();
+            return;
+        }
+        if (options[a] === "" && options[b] === "O" && options[c] === "O") {
+            updateCell(cells[a], a);
+            winnerCheck();
+            return;
+        }
+    }
+
+    // Check for a blocking move
+    for (let i = 0; i < winTerms.length; i++) {
+        const [a, b, c] = winTerms[i];
+        if (options[a] === "X" && options[b] === "X" && options[c] === "") {
+            updateCell(cells[c], c);
+            winnerCheck();
+            return;
+        }
+        if (options[a] === "X" && options[b] === "" && options[c] === "X") {
+            updateCell(cells[b], b);
+            winnerCheck();
+            return;
+        }
+        if (options[a] === "" && options[b] === "X" && options[c] === "X") {
+            updateCell(cells[a], a);
+            winnerCheck();
+            return;
+        }
+    }
+
+    // If no winning or blocking move, pick a random empty cell
+    if (emptyCells.length > 0) {
+        const randomIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+        const cell = cells[randomIndex];
+        updateCell(cell, randomIndex);
+        winnerCheck();
+    }
 };
